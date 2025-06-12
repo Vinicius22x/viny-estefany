@@ -1,17 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Nosso Amor 💖</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Viny & Estefany</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #b30059;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .contador {
+      font-size: 1.5em;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .frase {
+      font-size: 1.2em;
+      margin-top: 30px;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Que nosso tempo nunca termine...</h1>
-        <h2>12 anos e contando... Amo você &lt;3</h2>
-        <div id="counter"></div>
-        <img src="foto.jpg" alt="Nosso amor">
-    </div>
-    <script src="script.js"></script>
+  <h1>Viny & Estefany 💖</h1>
+  <div class="contador" id="contador"></div>
+  <div class="frase">
+    Que nosso tempo nunca termine... 12 anos e contando...<br>Amo você &lt;3
+  </div>
+  <img src="foto.jpg" alt="Viny e Estefany juntos">
+
+  <script>
+    const inicio = new Date("2013-01-01T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      let totalSegundos = Math.floor((agora - inicio) / 1000);
+
+      const anos = Math.floor(totalSegundos / (365.25 * 24 * 3600));
+      totalSegundos -= Math.floor(anos * 365.25 * 24 * 3600);
+
+      const meses = Math.floor(totalSegundos / (30.44 * 24 * 3600));
+      totalSegundos -= Math.floor(meses * 30.44 * 24 * 3600);
+
+      const dias = Math.floor(totalSegundos / (24 * 3600));
+      totalSegundos %= (24 * 3600);
+
+      const horas = Math.floor(totalSegundos / 3600);
+      totalSegundos %= 3600;
+
+      const minutos = Math.floor(totalSegundos / 60);
+      const segundos = totalSegundos % 60;
+
+      document.getElementById("contador").innerHTML =
+        `${anos} anos, ${meses} meses, ${dias} dias, ` +
+        `${horas}h ${minutos}min ${segundos}s`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
 </body>
 </html>
